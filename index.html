@@ -71,6 +71,18 @@
       }
     },
     {
+      "@type": "SportsActivityLocation",
+      "name": "Matchbox Pickleball",
+      "description": "Wales' first purpose-built pickleball club with official courts",
+      "url": "https://matchboxpickleball.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Newport",
+        "addressRegion": "South Wales",
+        "addressCountry": "GB"
+      }
+    },
+    {
       "@type": "Person",
       "name": "Scott Mayo",
       "jobTitle": "SportsCoach",
@@ -1136,6 +1148,73 @@
     #who, #testimonials, #contact, #location { margin: 0 1vw; border-radius: 1.25rem; }
     .book-now-wrap { text-align: center !important; }
   }
+
+  /* ─── FAQ ─── */
+  #faq { background: var(--white); border-radius: 2rem; margin: 0 2vw; }
+
+  .faq-list { max-width: 760px; margin: 2.5rem auto 0; }
+
+  .faq-item {
+    border-bottom: 1px solid rgba(29,58,95,0.12);
+  }
+
+  .faq-item:first-child { border-top: 1px solid rgba(29,58,95,0.12); }
+
+  .faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 1.25rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.4;
+    transition: color 0.2s;
+  }
+
+  .faq-question:hover { color: var(--navy); }
+
+  .faq-question.open { color: var(--navy); }
+
+  .faq-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--accent-light);
+    border: 1.5px solid var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--navy);
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: transform 0.3s ease, background 0.2s;
+    line-height: 1;
+  }
+
+  .faq-question.open .faq-icon {
+    transform: rotate(45deg);
+    background: var(--accent);
+    color: var(--white);
+  }
+
+  .faq-answer {
+    display: none;
+    padding: 0 0 1.25rem;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--mid);
+  }
+
+  .faq-answer.open { display: block; }
 </style>
 </head>
 <body>
@@ -1553,6 +1632,98 @@
   </div>
 </section>
 
+<!-- FAQ -->
+<div class="section-gap"></div>
+<section id="faq" class="reveal">
+  <div style="max-width:760px;margin:0 auto;text-align:center;">
+    <span class="section-label">FAQ</span>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+  </div>
+  <div class="faq-list">
+
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        What pickleball coaching is available in South Wales?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Scott Mayo Pickleball offers 1-to-1 sessions, small group sessions, club sessions, and a Foundations Package for beginners. Coaching takes place across South Wales including Newport, Cardiff, Cwmbran, Newbridge, Ebbw Vale and beyond.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        Where does Scott Mayo coach pickleball?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Scott Mayo's main coaching residency is Matchbox Pickleball in Newport, Wales' first purpose-built pickleball club. He also coaches at Graig Community Centre in Bassaleg, Newport, and offers mobile coaching across South Wales.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        How much does pickleball coaching cost in South Wales?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Pricing varies depending on session type and location. Get in touch with Scott directly for a full price list and to discuss the best option for you.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        Is Scott Mayo a qualified pickleball coach?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Yes. Scott Mayo is a Level 1 qualified pickleball coach, Welsh National Triple Crown Champion, and captain of the Welsh National Pickleball Team. He has represented Wales at the European Pickleball Championships in both 2024 and 2025.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        Do you offer pickleball lessons for complete beginners?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Absolutely. The Foundations Package is designed specifically for beginners and covers all the essential shots including dinking, volleying, serving, returning, and the third shot. No experience or equipment is needed to get started.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        Can I bring friends to a pickleball coaching session?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Yes. Small group sessions are available for up to 4 players. This is a great option if you want to learn with friends or family and keeps the cost per person low.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        What is pickleball?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Pickleball is one of the world's fastest growing sports. Played on a badminton sized court with a paddle and a plastic ball, it combines elements of tennis, badminton, and table tennis. It is easy to pick up, suitable for all ages and fitness levels, and incredibly addictive.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        How do I book a pickleball coaching session in South Wales?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Simply send a WhatsApp message to Scott Mayo directly. Sessions are confirmed once payment has been received. Visit scottmayopickleball.com for more information.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        Do you offer pickleball coaching for clubs?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Yes. Scott Mayo offers structured club sessions where he brings coaching directly to your club night. Sessions are tailored to the group's level and designed to improve skills in a fun, energetic environment.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        How long does it take to learn pickleball?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Most beginners can rally and play a basic game within their first session. Developing more advanced skills like dinking, the third shot drop, and court positioning typically takes a few months of regular play and practice. With structured coaching the learning curve is significantly faster.</div>
+    </div>
+
+  </div>
+</section>
+
 <!-- MATCHBOX PICKLEBALL -->
 <div class="section-gap"></div>
 <section id="matchbox" class="reveal" style="background:var(--dark);border-radius:2rem;margin:0 2vw;padding:3rem 2rem;">
@@ -1732,6 +1903,26 @@
 
   document.querySelectorAll('.reveal').forEach(function (el) {
     revealObserver.observe(el);
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var answer = btn.nextElementSibling;
+      var isOpen = btn.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.faq-question.open').forEach(function (openBtn) {
+        openBtn.classList.remove('open');
+        openBtn.setAttribute('aria-expanded', 'false');
+        openBtn.nextElementSibling.classList.remove('open');
+      });
+      // Open clicked if it was closed
+      if (!isOpen) {
+        btn.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        answer.classList.add('open');
+      }
+    });
   });
 </script>
 </body>
