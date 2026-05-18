@@ -271,14 +271,40 @@
     gap: 0.5rem;
     background: var(--green);
     color: var(--white);
-    padding: 0.9rem 1.8rem;
+    padding: 1rem 2rem;
     border-radius: 100px;
     font-weight: 600;
     font-size: 0.95rem;
     text-decoration: none;
     transition: all 0.25s ease;
-    box-shadow: 0 4px 20px rgba(45,106,79,0.3);
+    box-shadow: 0 4px 24px rgba(15,31,54,0.45);
+  }
+
+  .btn-pulse {
     animation: btnPulse 2.4s ease-in-out infinite;
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+    padding: 1rem 2rem;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    cursor: pointer;
+  }
+
+  .btn-secondary:hover {
+    background: var(--accent);
+    color: var(--dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(62,207,178,0.3);
   }
 
   .btn-primary.fade-up {
@@ -434,6 +460,7 @@
     background: var(--white);
     border-radius: 2rem;
     margin: 0 2vw;
+    border-top: 2px solid rgba(62,207,178,0.15);
   }
 
   .who-grid {
@@ -456,15 +483,37 @@
     padding: 1.3rem 1.5rem;
     border: 1px solid rgba(45,106,79,0.1);
     transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--accent), transparent);
   }
 
   .service-card:hover {
-    border-color: var(--green);
+    border-color: var(--accent);
     transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(45,106,79,0.12);
+    background: rgba(62,207,178,0.04);
   }
 
-  .service-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+  .service-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.75rem;
+    width: 48px;
+    height: 48px;
+    background: var(--navy);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
 
   .service-card h3 {
     font-weight: 600;
@@ -545,6 +594,7 @@
     color: var(--white);
     border-radius: 2rem;
     margin: 0 2vw;
+    border-top: 2px solid rgba(62,207,178,0.15);
   }
 
   #location .section-label { color: var(--accent); }
@@ -658,7 +708,7 @@
   }
 
   /* ─── TESTIMONIALS ─── */
-  #testimonials { background: var(--white); border-radius: 2rem; margin: 0 2vw; overflow: hidden; }
+  #testimonials { background: var(--white); border-radius: 2rem; margin: 0 2vw; overflow: hidden; border-top: 2px solid rgba(62,207,178,0.15); }
 
   .testimonials-header {
     display: flex;
@@ -974,7 +1024,7 @@
 
   .footer-bottom {
     grid-column: 1 / -1;
-    border-top: 1px solid rgba(255,255,255,0.08);
+    border-top: 1px solid rgba(62,207,178,0.2);
     padding-top: 1.5rem;
     text-align: center;
     font-size: 0.78rem;
@@ -1044,8 +1094,8 @@
 
   /* ─── STATS BAR ─── */
   .stats-bar {
-    background: var(--dark);
-    padding: 3rem 2rem;
+    background: linear-gradient(135deg, #0f1f36 0%, #1d3a5f 100%);
+    padding: 5rem 2rem;
   }
   .stats-grid {
     display: grid;
@@ -1055,12 +1105,27 @@
     margin: 0 auto;
     text-align: center;
   }
+  .stat-item {
+    position: relative;
+    padding: 0 1rem;
+  }
+  .stat-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 60%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(62,207,178,0.45), transparent);
+  }
   .stat-number {
     display: block;
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 3rem;
+    font-size: 4.5rem;
     color: var(--accent);
     line-height: 1;
+    text-shadow: 0 0 40px rgba(62,207,178,0.35);
   }
   .stat-label {
     display: block;
@@ -1069,6 +1134,8 @@
     margin-top: 0.5rem;
     opacity: 0.85;
     line-height: 1.3;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
   }
 
   /* ─── DIVIDER ─── */
@@ -1094,8 +1161,9 @@
   /* ─── RESPONSIVE ─── */
   @media (max-width: 600px) {
     .rome-frame-img { object-position: 50% 70% !important; }
-    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-    .stat-number { font-size: 2.4rem; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem 1rem; }
+    .stat-number { font-size: 3.2rem; }
+    .stat-item::after { display: none; }
   }
 
   @media (max-width: 900px) {
@@ -1147,6 +1215,33 @@
     .footer-diadem { display: block; margin-top: 1.5rem; }
     #who, #testimonials, #contact, #location { margin: 0 1vw; border-radius: 1.25rem; }
     .book-now-wrap { text-align: center !important; }
+  }
+
+  @media (max-width: 768px) {
+    /* 1. Font sizes */
+    .hero-content h1 { font-size: 2.2rem; }
+
+    /* 2. Section vertical padding */
+    section { padding: 2.5rem 5vw; }
+    #matchbox, #magazine { padding: 2.5rem 1.5rem !important; }
+
+    /* 3. Service cards collapse to single column */
+    .services-grid { grid-template-columns: 1fr; }
+
+    /* 4. Buttons full width */
+    .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+
+    /* 5. Stats bar padding */
+    .stats-bar { padding: 3rem 1.5rem; }
+
+    /* 6. Blog images — stack cleanly at reduced height */
+    #blog img { height: 160px !important; }
+
+    /* 7. FAQ — comfortable touch target */
+    .faq-question { padding: 1.25rem 0.5rem 1.25rem 0; }
+
+    /* 8. Corporate / Matchbox / Magazine side margins */
+    #corporate, #matchbox, #magazine { margin: 0 1vw; }
   }
 
   /* ─── FAQ ─── */
@@ -1229,9 +1324,10 @@
     <li><a href="#who">Coaching</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#location">Location</a></li>
-    <li><a href="#events">Events</a></li>
     <li><a href="#testimonials">Reviews</a></li>
     <li><a href="#blog">Blog</a></li>
+    <li><a href="#corporate">Corporate</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact" class="nav-cta">BOOK A SESSION</a></li>
   </ul>
 </nav>
@@ -1282,6 +1378,11 @@
   </div>
 </div>
 
+<div style="position:relative;z-index:2;margin-bottom:-59px;line-height:0;pointer-events:none;">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 60" preserveAspectRatio="none" style="display:block;width:100%;height:60px;">
+    <path d="M0,30 C360,0 1080,60 1440,30 L1440,0 L0,0 Z" fill="#f5f9fc"/>
+  </svg>
+</div>
 
 <!-- STATS BAR -->
 <div class="stats-bar reveal">
@@ -1313,7 +1414,7 @@
       <h2 class="section-title">Is this for me?</h2>
       <p class="section-body">Whether you're looking to beat your friends at the local leisure centre, get one over your club mates in the ladder leagues, prepare for your first tournament, or push your game to the next level, you're in the right place.</p>
       <p class="section-body" style="margin-top:1rem;">I offer tailored sessions that are engaging, purposeful, and enjoyable, all designed to help you become the best version of yourself on the court.</p>
-      <p class="section-body" style="margin-top:0.75rem;"><a href="#testimonials" style="color:var(--green);font-weight:600;">Hear it from my players →</a></p>
+      <a href="#testimonials" class="btn-secondary" style="margin-top:1.5rem;">Hear it from my players →</a>
     </div>
     <div>
       <div class="services-grid">
@@ -1333,15 +1434,16 @@
           <p>Bringing structured coaching directly to your club.</p>
         </div>
         <div class="service-card">
-          <div class="service-icon">📋</div>
-          <h3>Foundations Package</h3>
-          <p>Master the essential shots and skills that form the foundation of every great pickleball player.</p>
+          <span style="position:absolute;top:0.6rem;right:0.6rem;background:var(--accent);color:var(--dark);font-size:0.65rem;font-weight:700;padding:0.2rem 0.55rem;border-radius:100px;letter-spacing:0.07em;text-transform:uppercase;">NEW</span>
+          <div class="service-icon">🏢</div>
+          <h3>Corporate Sessions</h3>
+          <p>Bring your team to Wales' first purpose-built pickleball club for a coaching experience unlike anything else. Perfect for team building, staff wellbeing days, and company events. No experience needed.</p>
         </div>
       </div>
     </div>
   </div>
   <div class="book-now-wrap" style="margin-top:2rem; text-align:center;">
-    <a href="https://wa.me/447546038594" class="btn-primary">BOOK NOW</a>
+    <a href="https://wa.me/447546038594" class="btn-primary btn-pulse">BOOK NOW</a>
   </div>
 </section>
 
@@ -1370,7 +1472,7 @@
     </div>
 
     <div class="book-now-wrap">
-      <a href="https://wa.me/447546038594" class="btn-primary">BOOK NOW</a>
+      <a href="https://wa.me/447546038594" class="btn-primary btn-pulse">BOOK NOW</a>
     </div>
   </div>
 </section>
@@ -1418,7 +1520,7 @@
       <span style="font-size:2.5rem; display:block; margin-bottom:1rem;">📅</span>
       <h3 style="color:var(--mid); font-family:'DM Serif Display',serif; font-size:1.4rem; margin-bottom:0.75rem;">No events scheduled right now</h3>
       <p style="max-width:480px; margin:0 auto 1.2rem;">Check back soon — new one-off sessions and masterclasses will appear here when they're confirmed. Message me directly to be added to the list so you hear first.</p>
-      <a href="https://wa.me/447546038594" class="btn-primary" style="font-size:0.85rem;">Stay in the loop</a>
+      <a href="https://wa.me/447546038594" class="btn-secondary">Stay in the loop</a>
     </div>
   </div>
 </section>
@@ -1489,7 +1591,7 @@
     <div class="slider-dots" id="slider-dots"></div>
   </div>
   <div style="text-align:center;padding:1.5rem 1rem 2rem;">
-    <a href="https://g.page/r/CakjiIGfRqnUEAI/review" target="_blank" rel="noopener" class="btn-primary">Leave a Review</a>
+    <a href="https://g.page/r/CakjiIGfRqnUEAI/review" target="_blank" rel="noopener" class="btn-secondary">Leave a Review</a>
   </div>
 </section>
 
@@ -1542,7 +1644,7 @@
     </div>
   </div>
   <div style="text-align:center; margin-top:2.5rem;">
-    <a href="https://wa.me/447546038594" class="btn-primary" style="background:var(--teal);color:var(--dark);box-shadow:0 4px 20px rgba(62,207,178,0.35);">BOOK NOW</a>
+    <a href="https://wa.me/447546038594" class="btn-primary btn-pulse" style="background:var(--teal);color:var(--dark);box-shadow:0 4px 20px rgba(62,207,178,0.35);">BOOK NOW</a>
   </div>
 </section>
 
@@ -1575,7 +1677,7 @@
     </div>
 
     <!-- Read More / Read Less button -->
-    <button id="blog-toggle" onclick="(function(){var e=document.getElementById('blog-expanded');var b=document.getElementById('blog-toggle');var open=e.style.display==='block';e.style.display=open?'none':'block';b.textContent=open?'Read More':'Read Less';})()" class="btn-primary" style="background:var(--accent);color:var(--dark);border:none;cursor:pointer;">Read More</button>
+    <button id="blog-toggle" onclick="(function(){var e=document.getElementById('blog-expanded');var b=document.getElementById('blog-toggle');var open=e.style.display==='block';e.style.display=open?'none':'block';b.textContent=open?'Read More':'Read Less';})()" class="btn-secondary" style="cursor:pointer;">Read More</button>
   </div>
 
   <!-- Divider between posts -->
@@ -1628,7 +1730,25 @@
     </div>
 
     <!-- Read More / Read Less button -->
-    <button id="blog2-toggle" onclick="(function(){var e=document.getElementById('blog2-expanded');var b=document.getElementById('blog2-toggle');var open=e.style.display==='block';e.style.display=open?'none':'block';b.textContent=open?'Read More':'Read Less';})()" class="btn-primary" style="background:var(--accent);color:var(--dark);border:none;cursor:pointer;">Read More</button>
+    <button id="blog2-toggle" onclick="(function(){var e=document.getElementById('blog2-expanded');var b=document.getElementById('blog2-toggle');var open=e.style.display==='block';e.style.display=open?'none':'block';b.textContent=open?'Read More':'Read Less';})()" class="btn-secondary" style="cursor:pointer;">Read More</button>
+  </div>
+</section>
+
+<!-- CORPORATE -->
+<div class="section-gap"></div>
+<section id="corporate" class="reveal" style="background:var(--navy);color:var(--white);border-radius:2rem;margin:0 2vw;">
+  <div style="max-width:760px;margin:0 auto;text-align:center;">
+    <span class="section-label" style="color:var(--accent);">For Teams &amp; Businesses</span>
+    <h2 class="section-title" style="color:var(--white);">Corporate Sessions</h2>
+    <p style="font-size:1.05rem;font-weight:600;color:var(--accent);margin-bottom:2rem;">
+      <a href="https://www.instagram.com/matchboxpickleball/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline;">Hosted at Matchbox Pickleball, Newport</a>
+    </p>
+    <p style="font-size:1.05rem;line-height:1.75;color:rgba(255,255,255,0.85);margin-bottom:2.5rem;">
+      Looking for a team building experience that is genuinely different? Scott Mayo Pickleball offers fully coached corporate sessions hosted at Matchbox Pickleball in Newport, Wales' first purpose-built pickleball club. Accessible, competitive, and incredibly fun — no experience or equipment needed. Every session is led personally by Welsh National Triple Crown Champion Scott Mayo. For availability and pricing get in touch directly.
+    </p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;">
+      <a href="https://wa.me/447546038594" class="btn-primary btn-pulse">Enquire Now</a>
+    </div>
   </div>
 </section>
 
@@ -1734,7 +1854,7 @@
     <span class="section-label" style="display:block;margin-bottom:0.5rem;color:var(--accent);">Main coaching residency</span>
     <h2 class="section-title" style="color:var(--white);margin-bottom:1.5rem;">Matchbox Pickleball</h2>
     <p class="section-body" style="color:rgba(255,255,255,0.75);margin-bottom:2rem;">Matchbox Pickleball is Wales' first purpose-built pickleball club, based in Newport. With official courts and a world class facility, there is simply nowhere else like it in Wales. As my main coaching residency, I am proud to be associated with a venue that is setting the standard for pickleball in this country. Whether you are a complete beginner or a seasoned competitor, Matchbox is the perfect place to play, train, and fall in love with the sport.</p>
-    <a href="https://matchboxpickleball.com" target="_blank" rel="noopener" class="btn-primary">Visit Matchbox Pickleball</a>
+    <a href="https://matchboxpickleball.com" target="_blank" rel="noopener" class="btn-secondary">Visit Matchbox Pickleball</a>
   </div>
 </section>
 
@@ -1750,7 +1870,7 @@
     <p class="section-body" style="color:rgba(255,255,255,0.75);margin-bottom:1rem;">I have been fortunate enough to write on behalf of Wales for World Pickleball Magazine, covering all things Welsh pickleball. With a background in writing, it has been a wonderful thing to be involved in and I would love for you to check it out.</p>
     <p class="section-body" style="color:rgba(255,255,255,0.75);margin-bottom:1rem;">The magazine is completely free to download and is released monthly — head over to the website to grab your copy.</p>
     <p class="section-body" style="color:rgba(255,255,255,0.75);margin-bottom:2rem;">If you have a Welsh pickleball story you would like to share with the world, I am always looking to tell the stories of the people in Wales. Feel free to <a href="https://wa.me/447546038594" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline;">get in touch</a>.</p>
-    <a href="https://worldpickleballmagazine.com" target="_blank" rel="noopener" class="btn-primary">Read the Magazine</a>
+    <a href="https://worldpickleballmagazine.com" target="_blank" rel="noopener" class="btn-secondary">Read the Magazine</a>
   </div>
 </section>
 
