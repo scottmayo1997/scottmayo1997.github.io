@@ -487,6 +487,12 @@
     transition: all 0.25s ease;
     position: relative;
     overflow: hidden;
+    cursor: pointer;
+  }
+
+  .service-card:focus-visible {
+    outline: 2px solid var(--teal);
+    outline-offset: 2px;
   }
 
   .service-card::before {
@@ -539,6 +545,100 @@
     color: var(--green);
     font-weight: 500;
     line-height: 1.6;
+  }
+
+  /* ─── MODAL ─── */
+  .goal-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(17,24,39,0.65);
+    backdrop-filter: blur(3px);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .goal-modal-overlay.active {
+    display: flex;
+    opacity: 1;
+  }
+
+  .goal-modal {
+    display: none;
+    position: relative;
+    background: var(--white);
+    border-radius: 1.5rem;
+    max-width: 460px;
+    width: 100%;
+    padding: 2.5rem 2rem 2rem;
+    text-align: left;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.35), 0 0 0 1px rgba(62,207,178,0.25), 0 0 40px rgba(62,207,178,0.2);
+    transform: translateY(16px) scale(0.97);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .goal-modal::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    border-radius: 1.5rem 1.5rem 0 0;
+    background: linear-gradient(to right, var(--teal), var(--navy));
+  }
+
+  .goal-modal.active {
+    display: block;
+  }
+
+  .goal-modal-overlay.active .goal-modal.active {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+
+  .goal-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: var(--cream);
+    color: var(--navy);
+    font-size: 1.2rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .goal-modal-close:hover {
+    background: var(--navy);
+    color: var(--white);
+  }
+
+  .goal-modal h3 {
+    color: var(--navy);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.9rem;
+    padding-right: 1.5rem;
+  }
+
+  .goal-modal p {
+    color: var(--mid);
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin-bottom: 1.6rem;
   }
 
   /* ─── ABOUT ─── */
@@ -880,6 +980,10 @@
     background: rgba(255,255,255,0.18);
     border-color: rgba(255,255,255,0.3);
     transform: translateX(4px);
+  }
+
+  .contact-link-primary .contact-link-text strong {
+    font-weight: 700;
   }
 
   .contact-link-icon {
@@ -1391,7 +1495,7 @@
 <div class="stats-bar reveal">
   <div class="stats-grid">
     <div class="stat-item">
-      <span class="stat-number" data-target="100" data-suffix="+">0+</span>
+      <span class="stat-number" data-target="200" data-suffix="+">0+</span>
       <span class="stat-label">Players Coached</span>
     </div>
     <div class="stat-item">
@@ -1417,38 +1521,79 @@
       <h2 class="section-title">Is this for me?</h2>
       <p class="section-body">Whether you're looking to beat your friends at the local leisure centre, get one over your club mates in the ladder leagues, prepare for your first tournament, or push your game to the next level, you're in the right place.</p>
       <p class="section-body" style="margin-top:1rem;">I offer tailored sessions that are engaging, purposeful, and enjoyable, all designed to help you become the best version of yourself on the court.</p>
-      <a href="#testimonials" class="btn-secondary" style="margin-top:1.5rem;">Hear it from my players →</a>
+      <p class="section-body" style="margin-top:1rem;">Or maybe you run a club or organise sessions and want to bring something structured and professional to your players. Club coaching sessions are one of the most popular things I offer, and the feedback from clubs across South Wales has been brilliant. If you think your club could benefit, get in touch and we can make it happen.</p>
     </div>
     <div>
       <div class="services-grid">
-        <div class="service-card">
+        <div class="service-card" data-modal="1to1" role="button" tabindex="0">
           <div class="service-icon">🎯</div>
           <h3>1-to-1 Sessions</h3>
           <p>Fully tailored coaching focused entirely on your game.</p>
         </div>
-        <div class="service-card">
+        <div class="service-card" data-modal="group" role="button" tabindex="0">
           <div class="service-icon">👥</div>
           <h3>Small Group Sessions</h3>
           <p>Learn together in a focused, energetic environment.</p>
         </div>
-        <div class="service-card">
+        <div class="service-card" data-modal="club" role="button" tabindex="0">
           <div class="service-icon">🏆</div>
           <h3>Club Sessions</h3>
-          <p>Bringing structured coaching directly to your club.</p>
+          <p>Bringing structured, professional coaching directly to your club night across South Wales.</p>
         </div>
-        <div class="service-card">
+        <div class="service-card" data-modal="corporate" role="button" tabindex="0">
           <span style="position:absolute;top:0.6rem;right:0.6rem;background:var(--accent);color:var(--dark);font-size:0.65rem;font-weight:700;padding:0.2rem 0.55rem;border-radius:100px;letter-spacing:0.07em;text-transform:uppercase;">NEW</span>
           <div class="service-icon">🏢</div>
           <h3>Corporate Sessions</h3>
           <p>Bring your team to Wales' first purpose-built pickleball club for a coaching experience unlike anything else. Perfect for team building, staff wellbeing days, and company events. No experience needed.</p>
         </div>
+        <div class="service-card" data-modal="online" role="button" tabindex="0">
+          <span style="position:absolute;top:0.6rem;right:0.6rem;background:var(--accent);color:var(--dark);font-size:0.65rem;font-weight:700;padding:0.2rem 0.55rem;border-radius:100px;letter-spacing:0.07em;text-transform:uppercase;">NEW</span>
+          <div class="service-icon">📱</div>
+          <h3>Online Coaching</h3>
+          <p>Not local to South Wales but still want to improve? Send in videos, have check ins via video or phone call, and get expert analysis of your game from wherever you are.</p>
+        </div>
       </div>
     </div>
   </div>
-  <div class="book-now-wrap" style="margin-top:2rem; text-align:center;">
+  <div class="book-now-wrap" style="margin-top:2rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+    <a href="#testimonials" class="btn-secondary">Hear it from my players →</a>
     <a href="https://wa.me/447546038594" class="btn-primary btn-pulse">BOOK NOW</a>
   </div>
 </section>
+
+<!-- GOAL MODALS -->
+<div class="goal-modal-overlay" id="goal-modal-overlay">
+  <div class="goal-modal" data-modal="1to1">
+    <button type="button" class="goal-modal-close" aria-label="Close">&times;</button>
+    <h3>1-to-1 Sessions</h3>
+    <p>Fully tailored coaching focused entirely on your game. Every session is built around your specific needs, whether you are a complete beginner or a competitive player looking to fine tune your game. Sessions available at Matchbox Pickleball, Graig Community Centre, and across South Wales.</p>
+    <a href="https://wa.me/447546038594" target="_blank" rel="noopener" class="btn-primary">Book Now</a>
+  </div>
+  <div class="goal-modal" data-modal="group">
+    <button type="button" class="goal-modal-close" aria-label="Close">&times;</button>
+    <h3>Small Group Sessions</h3>
+    <p>Learn together in a focused, energetic environment. Small group sessions are perfect if you want to improve alongside friends or family while keeping costs down. Maximum 4 players per session.</p>
+    <a href="https://wa.me/447546038594" target="_blank" rel="noopener" class="btn-primary">Book Now</a>
+  </div>
+  <div class="goal-modal" data-modal="club">
+    <button type="button" class="goal-modal-close" aria-label="Close">&times;</button>
+    <h3>Club Sessions</h3>
+    <p>Bringing structured coaching directly to your club. Club sessions are one of the most popular things Scott offers, with brilliant feedback from clubs across South Wales. If you run a club or organise sessions and want to bring something structured and professional to your players, get in touch and we can make it happen.</p>
+    <a href="https://wa.me/447546038594" target="_blank" rel="noopener" class="btn-primary">Enquire Now</a>
+  </div>
+  <div class="goal-modal" data-modal="corporate">
+    <button type="button" class="goal-modal-close" aria-label="Close">&times;</button>
+    <h3>Corporate Sessions</h3>
+    <p>A team building experience unlike anything else, hosted at Matchbox Pickleball in Newport, Wales first purpose built pickleball club. Accessible, competitive, and incredibly fun. No experience or equipment needed. Perfect for team building days, staff wellbeing events, and client entertainment.</p>
+    <a href="https://wa.me/447546038594" target="_blank" rel="noopener" class="btn-primary">Enquire Now</a>
+  </div>
+  <div class="goal-modal" data-modal="online">
+    <button type="button" class="goal-modal-close" aria-label="Close">&times;</button>
+    <h3>Online Coaching</h3>
+    <p>Not local to South Wales but still want to improve? Send in videos, have check ins via video or phone call, and get expert analysis of your game from wherever you are.</p>
+    <a href="https://wa.me/447546038594" target="_blank" rel="noopener" class="btn-primary">Enquire Now</a>
+  </div>
+</div>
 
 <div class="section-gap"></div>
 
@@ -1623,7 +1768,7 @@
       <p class="contact-lead">WhatsApp is the best way to reach me, I'll get back to you quickly and we can figure out exactly what you need from there.</p>
       <p class="contact-lead" style="margin-top:1rem;">If you want to follow along, see what I'm working on, and pick up a few tips along the way, my socials are just below.</p>
       <div class="contact-methods">
-        <a href="https://wa.me/447546038594" class="contact-link" target="_blank">
+        <a href="https://wa.me/447546038594" class="contact-link contact-link-primary" target="_blank">
           <div class="contact-link-icon">💬</div>
           <div class="contact-link-text">
             <strong>WhatsApp</strong>
@@ -1884,9 +2029,7 @@
     </a>
     <span class="section-label" style="display:block;margin-bottom:0.5rem;color:var(--accent);">Featured writer</span>
     <h2 class="section-title" style="color:var(--white);margin-bottom:1.5rem;">World Pickleball Magazine</h2>
-    <p class="section-body" style="color:rgba(255,255,255,0.75);margin-bottom:1rem;">I have been fortunate enough to write on behalf of Wales for World Pickleball Magazine, covering all things Welsh pickleball. With a background in writing, it has been a wonderful thing to be involved in and I would love for you to check it out.</p>
-    <p class="section-body" style="color:rgba(255,255,255,0.75);margin-bottom:1rem;">The magazine is completely free to download and is released monthly — head over to the website to grab your copy.</p>
-    <p class="section-body" style="color:rgba(255,255,255,0.75);margin-bottom:2rem;">If you have a Welsh pickleball story you would like to share with the world, I am always looking to tell the stories of the people in Wales. Feel free to <a href="https://wa.me/447546038594" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline;">get in touch</a>.</p>
+    <p class="section-body" style="color:rgba(255,255,255,0.75);margin-bottom:2rem;">I was proud to serve as the Welsh writing correspondent for World Pickleball Magazine, covering all things Welsh pickleball. If you would like to read my work, head over to the magazine website and search for "Scott Mayo" or "Wales" to find my previous articles. The magazine is completely free to download and released monthly.</p>
     <a href="https://worldpickleballmagazine.com" target="_blank" rel="noopener" class="btn-secondary">Read the Magazine</a>
   </div>
 </section>
@@ -2061,6 +2204,49 @@
       }
     });
   });
+
+  // Goal modals
+  var goalOverlay = document.getElementById('goal-modal-overlay');
+  if (goalOverlay) {
+    var goalModals = goalOverlay.querySelectorAll('.goal-modal');
+
+    function openGoalModal(key) {
+      goalModals.forEach(function (m) {
+        m.classList.toggle('active', m.dataset.modal === key);
+      });
+      goalOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeGoalModal() {
+      goalOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.service-card[data-modal]').forEach(function (card) {
+      card.addEventListener('click', function () {
+        openGoalModal(card.dataset.modal);
+      });
+      card.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openGoalModal(card.dataset.modal);
+        }
+      });
+    });
+
+    goalOverlay.querySelectorAll('.goal-modal-close').forEach(function (btn) {
+      btn.addEventListener('click', closeGoalModal);
+    });
+
+    goalOverlay.addEventListener('click', function (e) {
+      if (e.target === goalOverlay) closeGoalModal();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeGoalModal();
+    });
+  }
 </script>
 </body>
 </html>
