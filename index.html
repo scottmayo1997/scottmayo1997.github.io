@@ -159,9 +159,6 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: rgb(28,59,79);
-    border-radius: 10px;
-    padding: 6px 14px;
   }
 
   .nav-logo-box img {
@@ -222,9 +219,6 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: rgb(28,59,79);
-    border-radius: 16px;
-    padding: 18px 28px;
     margin-bottom: 1.5rem;
     max-width: 100%;
   }
@@ -1105,9 +1099,6 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: rgb(28,59,79);
-    border-radius: 8px;
-    padding: 5px 12px;
   }
 
   .footer-logo-box img { height: 30px; width: auto; display: block; }
@@ -1527,7 +1518,7 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#hero" class="nav-logo"><span class="nav-logo-box"><img src="New%20LOGO.svg" alt="Scott Mayo Pickleball"/></span></a>
+  <a href="#hero" class="nav-logo"><span class="nav-logo-box"><img src="Pickleball%20Logo%20Transparent%20Background.png" alt="Scott Mayo Pickleball"/></span></a>
   <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu">
     <span></span><span></span><span></span>
   </button>
@@ -1548,7 +1539,7 @@
 <section id="hero">
   <div class="hero-bg-shape"></div>
   <div class="hero-content">
-    <span class="hero-logo-box fade-up fade-up-1"><img src="New%20LOGO.svg" alt="Scott Mayo Pickleball" style="height:104px;width:auto;display:block;margin:0;"/></span>
+    <span class="hero-logo-box fade-up fade-up-1"><img src="Pickleball%20Logo%20Transparent%20Background.png" alt="Scott Mayo Pickleball" style="height:104px;width:auto;display:block;margin:0;"/></span>
     <h1 class="fade-up fade-up-2">Unlock your <em>pickleball</em> potential</h1>
     <a href="https://wa.me/447546038594" class="btn-primary fade-up fade-up-3" style="margin-bottom:2rem;">BOOK NOW</a>
     <p class="fade-up fade-up-4" style="color:#1d3a5f;max-width:520px;margin:0 auto;font-size:1.2rem;line-height:1.6;font-weight:700;">Learn from Wales' most decorated pickleball player in sessions that are focused, fun, and built around you.</p>
@@ -2173,7 +2164,7 @@
 <!-- FOOTER -->
 <footer>
   <div>
-    <a href="#hero" class="footer-logo"><span class="footer-logo-box"><img src="New%20LOGO.svg" alt="Scott Mayo Pickleball"/></span></a>
+    <a href="#hero" class="footer-logo"><span class="footer-logo-box"><img src="Pickleball%20Logo%20Transparent%20Background.png" alt="Scott Mayo Pickleball"/></span></a>
     <p class="footer-text">Bespoke pickleball coaching for all levels, based in South Wales.</p>
     <div class="footer-badge">📋 Level 1 Qualified Coach</div>
   </div>
@@ -2403,6 +2394,217 @@
       if (e.key === 'Escape') closeGoalModal();
     });
   }
+</script>
+
+<!-- ─── CHRISTMAS GIFT VOUCHER POP-UP ───
+     Shows once per visitor, ~2.5s after landing, and switches itself off
+     automatically after 25 December 2026. To remove it early, delete this
+     whole block (from this comment down to the closing </script>). -->
+<style>
+  .xmas-popup-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: rgba(17,24,39,0.6);
+    backdrop-filter: blur(3px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .xmas-popup-overlay.open { display: flex; }
+  .xmas-popup-overlay.visible { opacity: 1; }
+
+  .xmas-popup {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+    background: #1d3a5f;
+    color: #ffffff;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(62,207,178,0.35);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+    padding: 2.75rem 2rem 2rem;
+    text-align: center;
+    overflow: hidden;
+    font-family: 'DM Sans', sans-serif;
+    transform: translateY(16px) scale(0.98);
+    transition: transform 0.3s ease;
+  }
+  .xmas-popup-overlay.visible .xmas-popup { transform: none; }
+  .xmas-popup:focus { outline: none; }
+
+  /* subtle festive touch: faint snowflakes in the corners */
+  .xmas-popup-flake {
+    position: absolute;
+    color: #3ecfb2;
+    opacity: 0.18;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+  .xmas-popup-flake.f1 { top: 0.9rem; left: 1.1rem; font-size: 1.6rem; }
+  .xmas-popup-flake.f2 { bottom: 1rem; right: 1.2rem; font-size: 2.2rem; }
+  .xmas-popup-flake.f3 { top: 3.2rem; right: 3.4rem; font-size: 0.9rem; }
+
+  .xmas-popup-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #d4af37, #b9353f);
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.9rem;
+    border-radius: 100px;
+    margin-bottom: 1.1rem;
+  }
+
+  .xmas-popup h2 {
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+    font-size: clamp(1.55rem, 5.5vw, 2rem);
+    line-height: 1.2;
+    color: #ffffff;
+    margin: 0 0 0.75rem;
+  }
+  .xmas-popup h2 em { color: #3ecfb2; font-style: italic; }
+
+  .xmas-popup p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.8);
+    margin: 0 0 1.6rem;
+  }
+
+  .xmas-popup-cta {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    background: #3ecfb2;
+    color: #1d3a5f;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    padding: 0.95rem 2rem;
+    border-radius: 100px;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .xmas-popup-cta:hover { background: #2fb89e; transform: translateY(-1px); }
+
+  .xmas-popup-close {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.6rem;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    color: rgba(255,255,255,0.7);
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .xmas-popup-close:hover { background: rgba(255,255,255,0.1); color: #ffffff; }
+  .xmas-popup-close:focus-visible,
+  .xmas-popup-cta:focus-visible { outline: 2px solid #3ecfb2; outline-offset: 3px; }
+
+  @media (max-width: 480px) {
+    .xmas-popup { padding: 2.5rem 1.4rem 1.6rem; border-radius: 1.25rem; }
+    .xmas-popup p { font-size: 0.95rem; }
+    .xmas-popup-cta { display: block; width: 100%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .xmas-popup-overlay, .xmas-popup { transition: none; }
+  }
+</style>
+
+<div class="xmas-popup-overlay" id="xmas-popup" aria-hidden="true">
+  <div class="xmas-popup" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="xmas-popup-title" aria-describedby="xmas-popup-text">
+    <span class="xmas-popup-flake f1" aria-hidden="true">❄</span>
+    <span class="xmas-popup-flake f2" aria-hidden="true">❄</span>
+    <span class="xmas-popup-flake f3" aria-hidden="true">❄</span>
+    <button type="button" class="xmas-popup-close" aria-label="Close">&times;</button>
+    <span class="xmas-popup-badge">Christmas gifts</span>
+    <h2 id="xmas-popup-title">Give the gift of <em>pickleball</em> this Christmas</h2>
+    <p id="xmas-popup-text">Gift vouchers are available for coaching sessions.</p>
+    <a href="#gift-vouchers" class="xmas-popup-cta">Get a gift voucher</a>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var STORAGE_KEY = 'smp-xmas-popup-2026-seen';
+    var END_DATE = new Date(2026, 11, 26, 0, 0, 0); // stops showing from 26 Dec 2026 (visitor's local time)
+    var DELAY_MS = 2500;
+
+    if (new Date() >= END_DATE) return;
+    try { if (localStorage.getItem(STORAGE_KEY)) return; } catch (e) {}
+
+    var overlay = document.getElementById('xmas-popup');
+    if (!overlay) return;
+    var dialog = overlay.querySelector('.xmas-popup');
+    var closeBtn = overlay.querySelector('.xmas-popup-close');
+    var cta = overlay.querySelector('.xmas-popup-cta');
+    var lastFocus = null;
+    var isOpen = false;
+
+    function rememberSeen() {
+      try { localStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
+    }
+
+    function openPopup() {
+      // don't interrupt if one of the coaching-goal pop-ups is already open
+      var goalOverlay = document.querySelector('.goal-modal-overlay.active');
+      if (goalOverlay) { setTimeout(openPopup, 1500); return; }
+
+      rememberSeen(); // once per visitor, even if they ignore it and navigate away
+      isOpen = true;
+      lastFocus = document.activeElement;
+      overlay.classList.add('open');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () { overlay.classList.add('visible'); });
+      });
+      dialog.focus({ preventScroll: true });
+    }
+
+    function closePopup() {
+      if (!isOpen) return;
+      isOpen = false;
+      overlay.classList.remove('visible');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      setTimeout(function () { overlay.classList.remove('open'); }, 300);
+      if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+    }
+
+    closeBtn.addEventListener('click', closePopup);
+    overlay.addEventListener('click', function (e) {
+      if (!dialog.contains(e.target)) closePopup();
+    });
+    cta.addEventListener('click', closePopup); // closes, then the link scrolls to the voucher section
+    document.addEventListener('keydown', function (e) {
+      if (!isOpen) return;
+      if (e.key === 'Escape') { closePopup(); return; }
+      if (e.key === 'Tab') { // keep keyboard focus inside the pop-up
+        if (e.shiftKey && (document.activeElement === closeBtn || document.activeElement === dialog)) { e.preventDefault(); cta.focus(); }
+        else if (!e.shiftKey && document.activeElement === cta) { e.preventDefault(); closeBtn.focus(); }
+      }
+    });
+
+    setTimeout(openPopup, DELAY_MS);
+  })();
 </script>
 </body>
 </html>
